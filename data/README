@@ -1,0 +1,8 @@
+players.csv:      player ID matching table across various websites.
+                  Downloaded from CrunchTimeBaseball.com (thanks!).
+
+savant_data.csv:  2016 regular season pitch-by-pitch data (through July)
+                  downloaded from BaseballSavant.com (thanks!). In my
+                  experience you need to download these day in 5-day batches,
+                  or else the size of the data file is to large to be
+                  prepared correctly.

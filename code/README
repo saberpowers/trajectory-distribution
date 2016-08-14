@@ -1,0 +1,7 @@
+sabsem2016.r: code to reproduce all results presented at 2016 Saberseminar.
+              The entire script should run as-is within a couple of minutes, as
+              long as you have the same file structure as this repository.
+              The code is uncommented, but if I find that there is interest
+              in it being commented, I can go through it and do that.
+
+util.r:       some utility functions useful for this and other projects
