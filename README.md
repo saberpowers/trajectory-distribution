@@ -43,6 +43,8 @@ This project is far from complete. Some potential improvements are:
   launch angle on these swings. But combining these data with batted ball data
   are necessary to get a complete picture of the player.
 
+  * I have not (yet) considered biases due to data missing at non-random.
+
 To conclude, this is early stage research with much room for improvement. There
 are aspects of the currently methodology which I find unsatisfactory. If you
 are interested in this endeavour or have suggestions for improving some of the
