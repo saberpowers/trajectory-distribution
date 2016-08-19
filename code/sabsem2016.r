@@ -1,3 +1,4 @@
+# Make sure you have all of the below packages installed before running script
 library(colorspace)
 library(dplyr)
 library(ggplot2)
@@ -39,40 +40,43 @@ ewoba = woba.model$predictions
 x = data$hit_speed*cos(rad(data$hit_angle))
 y = data$hit_speed*sin(rad(data$hit_angle))
 
-smoothScatter(y ~ x, nbin=1000,
-    colramp = colorRampPalette(c('darkblue', 'blue', 'lightblue', 'green',
-    'yellow', 'orange', 'darkorange', 'red', 'darkred')), nrpoints = 0,
-    transformation = function(x) x^.75, axes = FALSE, xlab = '', ylab = '',
-    ylim = c(-45, 75))
-abline(0, rad(10), col = 'white', lwd = 2)
-abline(0, rad(25), col = 'white', lwd = 2)
-abline(0, rad(50), col = 'white', lwd = 2)
-text(117, 15, expression(10*degree), col = 'white', cex = 2)
-text(117, 44, expression(25*degree), col = 'white', cex = 2)
-text(96, 75, expression(50*degree), col = 'white', cex = 2)
-xcircle = cos(rad(seq(-90, 90, length = 1000)))
-ycircle = sin(rad(seq(-90, 90, length = 1000)))
-lines(70*xcircle, 70*ycircle, lty = 2, col = 'white', lwd = 2)
-lines(100*xcircle, 100*ycircle, lty = 2, col = 'white', lwd = 2)
-text(68, -45, '70mph', col = 'white', cex = 2)
-text(105, -45, '100mph', col = 'white', cex = 2)
+## For figs/woba.png:
 
+#smoothScatter(y ~ x, nbin=1000,
+#    colramp = colorRampPalette(c('darkblue', 'blue', 'lightblue', 'green',
+#    'yellow', 'orange', 'darkorange', 'red', 'darkred')), nrpoints = 0,
+#    transformation = function(x) x^.75, axes = FALSE, xlab = '', ylab = '',
+#    ylim = c(-45, 75))
+#abline(0, rad(10), col = 'white', lwd = 2)
+#abline(0, rad(25), col = 'white', lwd = 2)
+#abline(0, rad(50), col = 'white', lwd = 2)
+#text(117, 15, expression(10*degree), col = 'white', cex = 2)
+#text(117, 44, expression(25*degree), col = 'white', cex = 2)
+#text(96, 75, expression(50*degree), col = 'white', cex = 2)
+#xcircle = cos(rad(seq(-90, 90, length = 1000)))
+#ycircle = sin(rad(seq(-90, 90, length = 1000)))
+#lines(70*xcircle, 70*ycircle, lty = 2, col = 'white', lwd = 2)
+#lines(100*xcircle, 100*ycircle, lty = 2, col = 'white', lwd = 2)
+#text(68, -45, '70mph', col = 'white', cex = 2)
+#text(105, -45, '100mph', col = 'white', cex = 2)
 
-hbin = hexbin(x, y, xbins = 100, IDs = TRUE)
-mtrans = hexTapply(hbin, woba, mean, na.rm = TRUE)
-pushHexport(hexViewport(hbin, ybnds = c(-50, 100)))
-grid.hexagons(hbin, use.count = FALSE, cell.at = mtrans, mincnt = min(mtrans),
-  maxcnt = max(mtrans), colramp = colorRampPalette(pal(50)))
-llines(200*c(0, 1), 200*c(0, 2*pi*10/360), col = 'black', lwd = 2)
-llines(200*c(0, 1), 200*c(0, 2*pi*25/360), col = 'black', lwd = 2)
-llines(200*c(0, 1), 200*c(0, 2*pi*50/360), col = 'black', lwd = 2)
-ltext(117, 15, expression(10*degree), cex = 2)
-ltext(117, 44, expression(25*degree), cex = 2)
-ltext(96, 75, expression(50*degree), cex = 2)
-llines(70*xcircle, 70*ycircle, col = 'black', lty = 2, lwd = 2)
-llines(100*xcircle, 100*ycircle, col = 'black', lty = 2, lwd = 2)
-ltext(68, -45, '70mph', cex = 2)
-ltext(105, -45, '100mph', cex = 2)
+## For figs/density.png:
+
+#hbin = hexbin(x, y, xbins = 100, IDs = TRUE)
+#mtrans = hexTapply(hbin, woba, mean, na.rm = TRUE)
+#pushHexport(hexViewport(hbin, ybnds = c(-50, 100)))
+#grid.hexagons(hbin, use.count = FALSE, cell.at = mtrans, mincnt = min(mtrans),
+#  maxcnt = max(mtrans), colramp = colorRampPalette(pal(50)))
+#llines(200*c(0, 1), 200*c(0, 2*pi*10/360), col = 'black', lwd = 2)
+#llines(200*c(0, 1), 200*c(0, 2*pi*25/360), col = 'black', lwd = 2)
+#llines(200*c(0, 1), 200*c(0, 2*pi*50/360), col = 'black', lwd = 2)
+#ltext(117, 15, expression(10*degree), cex = 2)
+#ltext(117, 44, expression(25*degree), cex = 2)
+#ltext(96, 75, expression(50*degree), cex = 2)
+#llines(70*xcircle, 70*ycircle, col = 'black', lty = 2, lwd = 2)
+#llines(100*xcircle, 100*ycircle, col = 'black', lty = 2, lwd = 2)
+#ltext(68, -45, '70mph', cex = 2)
+#ltext(105, -45, '100mph', cex = 2)
 
 ################################
 # Part I: Modelling launch angle
@@ -177,6 +181,21 @@ errbar(r.mean$pred, r.mean$x, r.mean$x - 3 * r.sd$x / sqrt(r.n$x),
   r.mean$x + 3 * r.sd$x / sqrt(r.n$x), col = 'dodgerblue',
   errbar.col = 'dodgerblue', axes = FALSE, xlab = 'Predicted launch angle',
   ylab = 'Residual')
+abline(h = 0, lty = 2)
+axis(1, at = c(0, 10, 25))
+axis(2)
+dev.off()
+
+pdf('figs/angle-diagnostic-zoomed.pdf', height = 5)
+fitted.angle = predict(ridge.angle, X, s = 'lambda.min')[, 1]
+r = data$hit_angle - fitted.angle
+r.mean = aggregate(r, list(pred = round(fitted.angle)), mean)
+r.sd = aggregate(r, list(pred = round(fitted.angle)), sd)
+r.n = aggregate(r, list(pred = round(fitted.angle)), length)
+errbar(r.mean$pred, r.mean$x, r.mean$x - 3 * r.sd$x / sqrt(r.n$x),
+  r.mean$x + 3 * r.sd$x / sqrt(r.n$x), col = 'dodgerblue',
+  errbar.col = 'dodgerblue', axes = FALSE, xlab = 'Predicted launch angle',
+  ylab = 'Residual', ylim = c(-20, 20))
 abline(h = 0, lty = 2)
 axis(1, at = c(0, 10, 25))
 axis(2)
@@ -298,6 +317,7 @@ circle70 = (70*data.frame(x=cos(rad(mesh.angle)), y=sin(rad(mesh.angle)))) %>%
 circle100 = (100*data.frame(x=cos(rad(mesh.angle)), y=sin(rad(mesh.angle)))) %>%
   filter(x > 0 & x < 120) %>% filter(y > -60 & y < 80)
 
+
 matchup.heatmap = function(b, p) {
   mean.angle = sum(coef.angle[c('Intercept', paste('b', b), paste('p', p))])
   var.angle = sum(coef.var[c('Intercept', paste('b', b), paste('p', p))])
@@ -335,6 +355,7 @@ matchup.heatmap = function(b, p) {
     ggtitle(paste(b, 'v.', p)) + no.axes
 }
 
+
 pdf('figs/arenado-young.pdf')
 matchup.heatmap('Nolan Arenado', 'Chris Young')
 dev.off()
@@ -351,4 +372,12 @@ pdf('figs/stanton-nova.pdf')
 matchup.heatmap('Giancarlo Stanton', 'Ivan Nova')
 dev.off()
 
+batters = sort(unique(batter))
+pitchers = sort(unique(pitcher))
 
+# export data for Shiny app:
+if (is.element('trajectory-distribution', list.files('code'))) {
+  save(angle, batters, circle70, circle100, coef.angle, coef.trans, coef.var,
+    distribution, matchup.heatmap, mesh.angle, mesh.speed, no.axes, pitchers,
+    rad, speed, var.trans, file = 'code/trajectory-distribution/shiny.rda')
+}

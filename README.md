@@ -1,5 +1,5 @@
-Jointly predicting exity velocity and launch angle for batter-pitcher matchups
-==============================================================================
+Jointly predicting exit velocity and launch angle for batter-pitcher matchups
+=============================================================================
 
 Two years into the Statcast era, much work has been done on understanding the
 value of a batted ball, based on its trajectory. For example, on the first day
@@ -13,6 +13,9 @@ position and batter/pitcher evaluation. In this project, presented at
 Saberseminar 2016, I present an early attempt at methodology for predicting
 the joint distribution of exit velocity and launch angle, given the batter and
 pitcher involved in the matchup.
+
+You can easily explore the results for the batter and pitcher of your choosing
+at (https://saberpowers.shinyapps.io/trajectory-distribution)
 
 This project is far from complete. Some potential improvements are:
 
