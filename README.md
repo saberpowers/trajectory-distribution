@@ -15,7 +15,7 @@ the joint distribution of exit velocity and launch angle, given the batter and
 pitcher involved in the matchup.
 
 You can easily explore the results for the batter and pitcher of your choosing
-at (https://saberpowers.shinyapps.io/trajectory-distribution)
+at https://saberpowers.shinyapps.io/trajectory-distribution.
 
 This project is far from complete. Some potential improvements are:
 
