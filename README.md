@@ -14,6 +14,9 @@ Saberseminar 2016, I present an early attempt at methodology for predicting
 the joint distribution of exit velocity and launch angle, given the batter and
 pitcher involved in the matchup.
 
+The Hardball Times published my article about this project on August 19, 2016.
+http://www.hardballtimes.com/toward-a-probability-distribution-over-batted-ball-trajectories/.
+
 You can easily explore the results for the batter and pitcher of your choosing
 at https://saberpowers.shinyapps.io/trajectory-distribution.
 
