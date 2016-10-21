@@ -3,6 +3,6 @@ players.csv:      player ID matching table across various websites.
 
 savant_data.csv:  2016 regular season pitch-by-pitch data (through July)
                   downloaded from BaseballSavant.com (thanks!). In my
-                  experience you need to download these day in 5-day batches,
-                  or else the size of the data file is to large to be
+                  experience you need to download these data in 5-day batches,
+                  or else the size of the data file is too large to be
                   prepared correctly.

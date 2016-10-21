@@ -33,6 +33,8 @@ cv.ranger = function(formula, data, mtry = floor(ncol(data)^(1:4/4)),
   node.size = c(100, 30, 5, 1), ...) {
 
   error = matrix(NA, length(mtry), length(node.size))
+  rownames(error) = mtry
+  colnames(error) = node.size
   fit = list()
   for (m in 1:length(mtry)) {
     fit[[m]] = list()
@@ -44,6 +46,8 @@ cv.ranger = function(formula, data, mtry = floor(ncol(data)^(1:4/4)),
   }
   n = which.min(apply(error, 2, min))
   m = which.min(error[, n])
-  fit[[m]][[n]]
+  result = fit[[m]][[n]]
+  result$cv = error
+  result
 }
 

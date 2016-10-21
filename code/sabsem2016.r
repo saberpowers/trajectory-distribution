@@ -32,9 +32,10 @@ w['Single'] = .878
 w['Double'] = 1.243
 w['Triple'] = 1.572
 w['Home Run'] = 2.021
-woba = w[as.character(data$events)]/1.217
+woba = w[as.character(data$events)]
 
-woba.model = ranger(woba ~ hit_speed + hit_angle, data, write.forest = TRUE)
+woba.model = ranger(woba ~ hit_speed + hit_angle, data, write.forest = TRUE,
+  mtry = 1, min.node.size = 500)
 ewoba = woba.model$predictions
 
 x = data$hit_speed*cos(rad(data$hit_angle))
@@ -372,12 +373,3 @@ pdf('figs/stanton-nova.pdf')
 matchup.heatmap('Giancarlo Stanton', 'Ivan Nova')
 dev.off()
 
-batters = sort(unique(batter))
-pitchers = sort(unique(pitcher))
-
-# export data for Shiny app:
-if (is.element('trajectory-distribution', list.files('code'))) {
-  save(angle, batters, circle70, circle100, coef.angle, coef.trans, coef.var,
-    distribution, matchup.heatmap, mesh.angle, mesh.speed, no.axes, pitchers,
-    rad, speed, var.trans, file = 'code/trajectory-distribution/shiny.rda')
-}
